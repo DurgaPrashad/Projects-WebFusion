@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Language Translation</title>
+</head>
+
+<style>
+body {
+    background: linear-gradient(to bottom, orange -50%, white 50%, green 150%);
+    margin: 0; /* Reset default margin */
+    padding: 0; /* Reset default padding */
+    height: 100vh; /* Ensure the gradient covers the entire viewport height */
+}
+
+
+</style>
+
+    
+<body>
+    <h1>Language Translation</h1>
+
+    <!-- Source language selection box -->
+    <select id="sourceLanguageSelect">
+           <option value="ta-IN">Tamil</option>
+        <option value="zh-CN">Mandarin Chinese</option>
+  <option value="es-ES">Spanish</option>
+  <option value="en-US">English</option>
+  <option value="bn-IN">Bengali</option>
+  <option value="pt-BR">Portuguese</option>
+  <option value="ru-RU">Russian</option>
+  <option value="ja-JP">Japanese</option>
+  <option value="ko-KR">Korean</option>
+  <option value="jv-ID">Javanese</option>
+  <option value="de-DE">German</option>
+  <option value="fr-FR">French</option>
+
+  <option value="tr-TR">Turkish</option>
+  <option value="vi-VN">Vietnamese</option>
+  <option value="th-TH">Thai</option>
+  <option value="pl-PL">Polish</option>
+  <option value="fa-IR">Persian</option>
+  <option value="it-IT">Italian</option>
+  <option value="ha-NE">Hausa</option>
+  <option value="hi-IN">Hindi</option>
+  <option value="bn-IN">Bengali</option>
+  <option value="te-IN">Telugu</option>
+  <option value="mr-IN">Marathi</option>
+ 
+  <option value="gu-IN">Gujarati</option>
+  <option value="kn-IN">Kannada</option>
+  <option value="ml-IN">Malayalam</option>
+  <option value="pa-IN">Punjabi</option>
+  <option value="as-IN">Assamese</option>
+  <option value="kn-IN">Konkani</option>
+  <option value="mai-IN">Maithili</option>
+  <option value="doi-IN">Dogri</option>
+  <option value="brx-IN">Bodo</option>
+  <option value="ks-IN">Kashmiri</option>
+  <option value="ne-NP">Nepali</option>
+  <option value="doi-IN">Dogri</option>
+  <option value="si-LK">Sikkimese</option>
+  <option value="mni-IN">Manipuri</option>
+  <option value="sat-IN">Santali</option>
+  <option value="en-IN">Indian English</option>
+    </select>
+
+    <!-- Target language selection box -->
+    <select id="targetLanguageSelect">
+<option value="hi-IN">Hindi</option>
+        <option value="zh-CN">Mandarin Chinese</option>
+  <option value="es-ES">Spanish</option>
+  <option value="en-US">English</option>
+  <option value="bn-IN">Bengali</option>
+  <option value="pt-BR">Portuguese</option>
+  <option value="ru-RU">Russian</option>
+  <option value="ja-JP">Japanese</option>
+  <option value="ko-KR">Korean</option>
+  <option value="jv-ID">Javanese</option>
+  <option value="de-DE">German</option>
+  <option value="fr-FR">French</option>
+   <option value="ta-IN">Tamil</option>
+  <option value="tr-TR">Turkish</option>
+  <option value="vi-VN">Vietnamese</option>
+  <option value="th-TH">Thai</option>
+  <option value="pl-PL">Polish</option>
+  <option value="fa-IR">Persian</option>
+  <option value="it-IT">Italian</option>
+  <option value="ha-NE">Hausa</option>
+  <option value="hi-IN">Hindi</option>
+  <option value="bn-IN">Bengali</option>
+  <option value="te-IN">Telugu</option>
+  <option value="mr-IN">Marathi</option>
+  <option value="ta-IN">Tamil</option>
+  <option value="gu-IN">Gujarati</option>
+  <option value="kn-IN">Kannada</option>
+  <option value="ml-IN">Malayalam</option>
+  <option value="pa-IN">Punjabi</option>
+  <option value="as-IN">Assamese</option>
+  <option value="kn-IN">Konkani</option>
+  <option value="mai-IN">Maithili</option>
+  <option value="doi-IN">Dogri</option>
+  <option value="brx-IN">Bodo</option>
+  <option value="ks-IN">Kashmiri</option>
+  <option value="ne-NP">Nepali</option>
+  <option value="doi-IN">Dogri</option>
+  <option value="si-LK">Sikkimese</option>
+  <option value="mni-IN">Manipuri</option>
+  <option value="sat-IN">Santali</option>
+  <option value="en-IN">Indian English</option>
+    </select>
+
+    <!-- Input box for typing text -->
+    <textarea id="inputText" rows="4" cols="50" placeholder="Type your text here..."></textarea>
+
+    <!-- Button to trigger translation -->
+    <button id="translateButton">Translate</button>
+
+    <!-- Display translated text -->
+    <div>
+        <h2>Translated Text:</h2>
+        <div id="translatedText"></div>
+    </div>
+
+    <script>
+        const sourceLanguageSelect = document.getElementById('sourceLanguageSelect');
+        const targetLanguageSelect = document.getElementById('targetLanguageSelect');
+        const inputText = document.getElementById('inputText');
+        const translateButton = document.getElementById('translateButton');
+        const translatedText = document.getElementById('translatedText');
+
+        translateButton.addEventListener('click', () => {
+            const textToTranslate = inputText.value;
+            const sourceLanguage = sourceLanguageSelect.value;
+            const targetLanguage = targetLanguageSelect.value;
+            translateText(textToTranslate, sourceLanguage, targetLanguage);
+        });
+
+        function translateText(text, sourceLanguage, targetLanguage) {
+            // Replace 'YOUR_MYMEMORY_API_KEY' with your actual MyMemory API key.
+            const apiKey = '';
+
+            const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
+                text
+            )}&langpair=${sourceLanguage}|${targetLanguage}&key=${apiKey}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(result => {
+                    if (result && result.responseData && result.responseData.translatedText) {
+                        const translation = result.responseData.translatedText;
+                        translatedText.innerText = translation;
+                    } else {
+                        translatedText.innerText = 'Translation failed';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    translatedText.innerText = 'Translation failed';
+                });
+        }
+    </script>
+</body>
+</html>
