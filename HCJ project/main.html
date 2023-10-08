@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Five Boxes</title>
+
+<style>
+        /* Reset default margin and padding for the entire page */
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for the navigation bar */
+        .navbar {
+            background-color: rgba(70, 61, 118, 0.33); /* Background color for the navbar */
+            padding: 10px 20px; /* Padding for the navbar */
+            display: flex; /* Display navigation elements in a row */
+            align-items: center; /* Align items vertically in the center */
+            justify-content: space-between; /* Space items evenly horizontally */
+        }
+
+        /* Style for the logo image */
+        .logo {
+            width: 50px; /* Adjust the width of the logo */
+            height: auto; /* Maintain the aspect ratio */
+        }
+
+        /* Style for the links container */
+        .links-container {
+            list-style: none; /* Remove default list styles */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            display: flex; /* Display links in a row */
+        }
+
+        /* Style for individual link items */
+        .link-item {
+            margin-right: 20px; /* Add spacing between link items */
+        }
+
+        /* Style for link text */
+        .link {
+            text-decoration: none; /* Remove underline on links */
+            color: white; /* Text color for links */
+            font-weight: bold; /* Bold font for links */
+        }
+
+        /* Hover effect for links */
+        .link:hover {
+            text-decoration: red; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="images/1.jpg" class="logo" alt="">
+        <ul class="links-container">
+            <li class="link-item"><a href="3D.html" class="link">3D PRINTING</a></li>
+            <li class="link-item"><a href="robot.html" class="link">ROBOTICS</a></li>
+  <li class="link-item"><a href="ai.html" class="link">AI(ML)</a></li>
+            <li class="link-item"><a href="iot.html" class="link">IOT</a></li>
+  <li class="link-item"><a href="ar.html" class="link">AR/VR</a></li>
+            
+        </ul>
+    </nav>
+  <style>
+    body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, sans-serif;
+  position: relative; /* Ensure relative positioning */
+
+  /* Fallback background color */
+  background-color: #919191;
+  /* Background image URL */
+  background-image: url('images/b.png');
+  background-size: cover; /* Adjust the background image size */
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Background image URL */
+  background-image: url('images/b.png');
+  background-size: cover;
+  filter: blur(10px); /* Adjust the blur amount as needed */
+  z-index: -1;
+}
+body:hover {
+  overflow: hidden;
+}
+
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      height: 115vh;
+      perspective: 1000px; /* Set the perspective value to create a 3D effect */
+    }
+
+    .box {
+      width: calc(20% - 20px); /* Initially 5 boxes in a row */
+      max-width: 200px;
+      height: 300px;
+      color: white;
+      text-align: center;
+      line-height: 150px;
+      font-size: 27px;
+      border-radius: 14px;
+      box-shadow: 0 30px 0px rgba(0, 0, 0, 0.2);
+      transition: transform 0.7s ease-in-out; /* Add a smooth transition */
+      cursor: pointer;
+      margin: 51px; /* Add margin for spacing between boxes */
+      transform-origin: center center; /* Set the transform origin to the center */
+      transform: rotateY(25deg) scale(0); /* Rotate and scale the box */
+      overflow: hidden; /* Hide overflowing content */
+      position: relative; /* Position the image and reflection */
+    }
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the entire box */
+  border-radius: 14px; /* Match the box's border-radius */
+  filter: brightness(70%); /* Apply a default brightness filter */
+}
+
+/* Remove the brightness filter on hover */
+.box:hover img {
+  filter: brightness(100%); /* Remove the brightness filter on hover */
+}
+
+    .box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure the image covers the entire box */
+      border-radius: 14px; /* Match the box's border-radius */
+    }
+
+    .reflection {
+      position: absolute;
+      bottom: -25%; /* Position the reflection just below the box */
+      left: 0;
+      right: 0;
+      height: 25%; /* Set the height to 25% to create a reflection effect */
+      opacity: 0.5; /* Adjust the opacity of the reflection */
+      transform: scaleY(-1); /* Flip the reflection vertically */
+      overflow: hidden; /* Hide overflowing content */
+    }
+
+    .box:hover {
+      transform: none; /* Reset transform when hovered */
+    }
+
+    .box:not(:hover) {
+      transform: rotateY(25deg) scale(1.1); /* Rotate and scale the box when not hovered */
+      margin: 34px;
+    }
+
+    /* Media queries for responsiveness */
+   @media (max-width: 750px) {
+  .box {
+    width: calc(100% - 20px); /* One box per row */
+    margin: 49px; /* Add space at the top and bottom of the boxes */
+    transform: none !important; /* Remove the transform when screen width is below 750px */
+  }
+}
+
+
+    @media (min-width: 751px) and (max-width: 1050px) {
+      .box {
+        width: calc(33.33% - 20px); /* Three boxes in a row */
+        margin: 25px; /* Reset margin to the default */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+       <a href="3D.html">
+      <img src="images/3d.pmg.webp" alt="Image 1">
+      <p>Box 1</p>
+    </a>
+    </div>
+    <div class="box">
+       <a href="robot.html">
+      <img src="images/rob.png" alt="Image 1">
+      <p>Box 1</p>
+    </a>
+    </div>
+    <div class="box">
+      <a href="ai.html">
+      <img src="images/am.png" alt="Image 1">
+      <p>Box 1</p>
+    </a>
+    </div>
+    <div class="box">
+       <a href="iot.html">
+      <img src="images/iot.png" alt="Image 1">
+      <p>Box 1</p>
+    </a>
+    </div>
+    <div class="box">
+       <a href="ar.html">
+      <img src="images/vr.png" alt="Image 1">
+      <p>Box 1</p>
+    </a>
+    </div>
+  </div>
+
+</body>
+</html>
